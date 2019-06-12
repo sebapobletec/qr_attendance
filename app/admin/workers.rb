@@ -6,10 +6,23 @@ ActiveAdmin.register Worker do
 #
 # or
 #
-# permit_params do
+permit_params :name, :rut, :company_id
 #   permitted = [:permitted, :attributes]
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+
+index do
+  column :name
+  column :company
+  column :created_at
+  actions
+end
+
+filter :company, as: :select
+filter :name
+filter :rut
+filter :created_at
+
 
 end
