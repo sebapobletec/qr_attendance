@@ -12,6 +12,7 @@ permit_params :name, :rut, :address, :user_id
 #   permitted
 # end
 index do
+  selectable_column
   column :name
   column :user do |company|
     company.user.email

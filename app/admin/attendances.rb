@@ -6,10 +6,28 @@ ActiveAdmin.register Attendance do
 #
 # or
 #
-# permit_params do
+permit_params :event_id, :worker_id, :attend
 #   permitted = [:permitted, :attributes]
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+
+index do
+  selectable_column
+  column :event
+  column :worker
+  column :company do |attendance|
+    attendance.event.company
+  end
+  column :created_at
+  column :attend
+  actions
+end
+
+filter :event, as: :select
+filter :worker, as: :select
+filter :created_at
+filter :attend, as: :select
+
 
 end

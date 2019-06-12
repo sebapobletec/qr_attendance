@@ -19,6 +19,7 @@ filter :date
 
 
 index do
+  selectable_column
   column :title
   column :theme
   column :company

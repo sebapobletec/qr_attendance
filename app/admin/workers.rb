@@ -13,6 +13,7 @@ permit_params :name, :rut, :company_id
 # end
 
 index do
+  selectable_column
   column :name
   column :rut
   column :company
