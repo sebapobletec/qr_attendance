@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  attend: false
+  event: one
+  worker: one
+
+two:
+  attend: false
+  event: two
+  worker: two
