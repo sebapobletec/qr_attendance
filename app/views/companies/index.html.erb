@@ -1,33 +1,30 @@
 <p id="notice"><%= notice %></p>
+<div class="container col">
+  <h1 class="jumbotron p-1">Companies</h1>
 
-<h1>Companies</h1>
+  <div class="m-1 p-1">
+    <%= link_to 'Add New Company', new_company_path, class: 'btn btn-primary' %>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Rut</th>
-      <th>Address</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @companies.each do |company| %>
+<div class="container col">
+  <table class='table'>
+    <thead>
       <tr>
-        <td><%= company.name %></td>
-        <td><%= company.rut %></td>
-        <td><%= company.address %></td>
-        <td><%= company.user %></td>
-        <td><%= link_to 'Show', company %></td>
-        <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Company</th>
+        <th colspan="3">Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
-<%= link_to 'New Company', new_company_path %>
+    <tbody>
+      <% @companies.each do |company| %>
+        <tr>
+          <td><h6><%= company.name %></h6></td>
+          <td><%= link_to 'Show', company, class:'btn btn-outline-info btn-sm' %></td>
+          <td><%= link_to 'Edit', edit_company_path(company), class:'btn btn-outline-dark btn-sm' %></td>
+          <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-outline-warning btn-sm' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

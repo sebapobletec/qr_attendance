@@ -1,4 +1,4 @@
-<%= form_with(model: company, local: true) do |form| %>
+<%= form_with(model: company, url: [@company], local: true) do |form| %>
   <% if company.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
@@ -10,28 +10,26 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group col-md-6">
+    <div class="field ">
+      <%= form.label :name %>
+      <%= form.text_field :name, class:'form-control', placeholder: 'Desafío LATAM SA' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :rut %>
-    <%= form.text_field :rut %>
+  <div class="form-group col-md-6">
+    <div class="field">
+      <%= form.label :rut %>
+      <%= form.text_field :rut, class:'form-control', placeholder: '78.905.689-5' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
+  <div class="form-group col-md-6">
+    <div class="field">
+      <%= form.label :adress %>
+      <%= form.text_field :adress, class:'form-control', placeholder: 'Rebeca Matte, Santiago' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<button type="submit" class="btn btn-primary m-1">CREATE COMPANY</button>
 <% end %>

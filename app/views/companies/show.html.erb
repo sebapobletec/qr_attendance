@@ -1,24 +1,35 @@
 <p id="notice"><%= notice %></p>
+<div class="container col">
 
-<p>
-  <strong>Name:</strong>
-  <%= @company.name %>
-</p>
+  <h1 class="jumbotron p-1"><%= @company.name %></h1>
 
-<p>
-  <strong>Rut:</strong>
-  <%= @company.rut %>
-</p>
+  <p>
+    <strong>Rut:</strong>
+    <%= @company.rut %>
+  </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @company.address %>
-</p>
+  <p>
+    <strong>Adress:</strong>
+    <%= @company.adress %>
+  </p>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @company.user %>
-</p>
+<div class="row m-1">
+  <div class="card col m-1">
+    <div class="card-body">
+      <h5 class="card-title">Workers</h5>
+      <p class="card-text">Add, edit or delete workers from this company.</p>
+      <%= link_to 'View Workers', company_workers_path(@company), class: 'btn btn-primary btn-lg btn-block' %>
+    </div>
+  </div>
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+  <div class="card col m-1" >
+    <div class="card-body">
+      <h5 class="card-title">Events</h5>
+      <p class="card-text">Add, edit or delete events from this company.</p>
+    <%= link_to 'Events', company_events_path(@company), class: 'btn btn-primary btn-lg btn-block' %>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Back', companies_path, class: 'btn btn-secondary m-1'  %>
