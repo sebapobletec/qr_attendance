@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  resources :events
-  resources :workers
-  resources :companies
+
+  resources :companies do
+    resources :workers
+    resources :events
+  end
+
   devise_for :users do
     resources :companies, shallow: true
   end
