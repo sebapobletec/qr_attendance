@@ -11,9 +11,10 @@ permit_params :company_id, :title, :theme, :date
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-filter :company, as: :select
+
 filter :title
 filter :theme, as: :select
+filter :company, as: :select
 filter :date
 
 
@@ -21,6 +22,7 @@ index do
   column :title
   column :theme
   column :company
+  column :date
   column :created_at
   actions
 end

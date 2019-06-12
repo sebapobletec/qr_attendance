@@ -14,14 +14,17 @@ permit_params :name, :rut, :company_id
 
 index do
   column :name
+  column :rut
   column :company
   column :created_at
   actions
 end
 
-filter :company, as: :select
+
+
 filter :name
 filter :rut
+filter :company, as: :select
 filter :created_at
 
 

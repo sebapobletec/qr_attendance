@@ -12,7 +12,7 @@ permit_params :email, :password
 #   permitted
 # end
 index do
-  column :id
+
   column :email
   column :created_at
   actions

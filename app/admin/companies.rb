@@ -6,15 +6,39 @@ ActiveAdmin.register Company do
 #
 # or
 #
-# permit_params do
+permit_params :name, :rut, :address, :user_id
 #   permitted = [:permitted, :attributes]
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
 index do
-  column :id
   column :name
+  column :user do |company|
+    company.user.email
+  end
   column :created_at
+  actions
+end
+
+filter :user_id,
+  label: 'User',
+  as: :select,
+  collection: User.pluck(:email, :id)
+filter :name
+filter :rut
+filter :created_at
+
+form do |f|
+  inputs 'Add Company' do
+    f.input :user_id,
+      label: 'User',
+      as: :select,
+      collection: User.pluck(:email, :id)
+    input :name
+    input :rut
+    input :address
+
+  end
   actions
 end
 
