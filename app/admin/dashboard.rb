@@ -58,5 +58,8 @@ ActiveAdmin.register_page "Dashboard" do
 
     end
 
+    panel 'Graphic' do
+      render 'shared/chart'
+    end
   end # content
 end
