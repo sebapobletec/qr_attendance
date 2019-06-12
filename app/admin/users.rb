@@ -36,4 +36,7 @@ end
     end
   end
 
+  filter :email
+  filter :created_at
+
 end
