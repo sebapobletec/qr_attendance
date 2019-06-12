@@ -5,11 +5,17 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+    @company = Company.find(params[:company_id])
+    @events = @events.where(company: @company)
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
+    @workers = Worker.all
+    @company = Company.find(params[:company_id])
+    @workers = @workers.where(company: @company)
+    @attendances = Attendance.all
   end
 
   # GET /events/new
@@ -25,10 +31,12 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    @company = Company.find(params[:company_id])
+    @event.company = @company
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to company_events_path(@company), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -40,9 +48,10 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
+    @company = Company.find(params[:company_id])
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        format.html { redirect_to company_events_path(@company), notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit }
@@ -55,8 +64,9 @@ class EventsController < ApplicationController
   # DELETE /events/1.json
   def destroy
     @event.destroy
+    @company = Company.find(params[:company_id])
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to company_events_path(@company), notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

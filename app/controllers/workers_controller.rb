@@ -5,6 +5,8 @@ class WorkersController < ApplicationController
   # GET /workers.json
   def index
     @workers = Worker.all
+    @company = Company.find(params[:company_id])
+    @workers = @workers.where(company: @company)
   end
 
   # GET /workers/1
@@ -25,10 +27,12 @@ class WorkersController < ApplicationController
   # POST /workers.json
   def create
     @worker = Worker.new(worker_params)
+    @company = Company.find(params[:company_id])
+    @worker.company = @company
 
     respond_to do |format|
       if @worker.save
-        format.html { redirect_to @worker, notice: 'Worker was successfully created.' }
+        format.html { redirect_to company_workers_path(@company), notice: 'Worker was successfully created.' }
         format.json { render :show, status: :created, location: @worker }
       else
         format.html { render :new }
@@ -40,9 +44,10 @@ class WorkersController < ApplicationController
   # PATCH/PUT /workers/1
   # PATCH/PUT /workers/1.json
   def update
+    @company = Company.find(params[:company_id])
     respond_to do |format|
       if @worker.update(worker_params)
-        format.html { redirect_to @worker, notice: 'Worker was successfully updated.' }
+        format.html { redirect_to company_workers_path(@company), notice: 'Worker was successfully updated.' }
         format.json { render :show, status: :ok, location: @worker }
       else
         format.html { render :edit }
@@ -55,8 +60,9 @@ class WorkersController < ApplicationController
   # DELETE /workers/1.json
   def destroy
     @worker.destroy
+    @company = Company.find(params[:company_id])
     respond_to do |format|
-      format.html { redirect_to workers_url, notice: 'Worker was successfully destroyed.' }
+      format.html { redirect_to company_workers_path(@company), notice: 'Worker was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
