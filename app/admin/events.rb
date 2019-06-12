@@ -6,10 +6,23 @@ ActiveAdmin.register Event do
 #
 # or
 #
-# permit_params do
+permit_params :company_id, :title, :theme, :date
 #   permitted = [:permitted, :attributes]
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+filter :company, as: :select
+filter :title
+filter :theme, as: :select
+filter :date
+
+
+index do
+  column :title
+  column :theme
+  column :company
+  column :created_at
+  actions
+end
 
 end
