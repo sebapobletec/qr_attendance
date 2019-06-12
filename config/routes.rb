@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   resources :companies do
     resources :workers
-    resources :events
+    resources :events do
+      resources :attendances, only: [:create, :update, :destroy]
+    end
   end
 
   devise_for :users do
