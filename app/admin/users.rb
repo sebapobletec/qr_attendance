@@ -6,7 +6,7 @@ ActiveAdmin.register User do
 #
 # or
 #
-# permit_params do
+permit_params :email, :password
 #   permitted = [:permitted, :attributes]
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
@@ -17,5 +17,23 @@ index do
   column :created_at
   actions
 end
+
+  form do |f|
+    inputs 'Add User' do
+      input :email
+      input :password
+    end
+    actions
+  end
+
+  controller do
+    def update
+      if (params[:user][:password].blank? && params[:user][:password_confirmation].blank?)
+        params[:user].delete("password")
+        params[:user].delete("password_confirmation")
+      end
+    super
+    end
+  end
 
 end
