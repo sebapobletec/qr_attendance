@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :events
+  resources :workers
   resources :companies
   devise_for :users do
     resources :companies, shallow: true

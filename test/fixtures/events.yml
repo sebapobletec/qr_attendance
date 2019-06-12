@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  theme: MyString
+  date: 2019-06-12 00:43:07
+  company: one
+
+two:
+  title: MyString
+  theme: MyString
+  date: 2019-06-12 00:43:07
+  company: two
