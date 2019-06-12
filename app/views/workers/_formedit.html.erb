@@ -1,4 +1,4 @@
-<%= form_with(model:@worker, url: company_workers_path, local: true) do |form| %>
+<%= form_with(model:@worker, url: company_worker_path, local: true) do |form| %>
   <% if worker.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(worker.errors.count, "error") %> prohibited this worker from being saved:</h2>
@@ -13,17 +13,15 @@
   <div class="form-group col-md-6">
     <div class="field">
       <%= form.label :name %>
-      <%= form.text_field :name, class:'form-control', placeholder: 'Norman Castro' %>
+      <%= form.text_field :name, class:'form-control' %>
     </div>
   </div>
 
   <div class="form-group col-md-6">
     <div class="field">
       <%= form.label :rut %>
-      <%= form.text_field :rut, class:'form-control', placeholder: '17.236.599-5' %>
+      <%= form.text_field :rut, class:'form-control' %>
     </div>
   </div>
-
-  <button type="submit" class="btn btn-primary m-1">CREATE WORKER</button>
-
+  <button type="submit" class="btn btn-primary m-1">UPDATE WORKER</button>
 <% end %>

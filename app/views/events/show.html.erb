@@ -17,8 +17,27 @@
 
 <p>
   <strong>Company:</strong>
-  <%= @event.company %>
+  <%= @event.company.name %>
 </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<h2>Workers</h2>
+  <% @workers.each do |worker| %>
+    <tr>
+      <td><%= worker.name %></td>
+      <td><%= link_to 'New attendance', company_event_attendances_path(@company, @event, :worker_id => worker.id), method: :POST %></td> <br>
+    </tr>
+  <% end %>
+<br>
+<h2>Attendances</h2>
+<% @attendances.each do |attendance| %>
+  <tr>
+    <td><%= attendance.worker.name %></td>
+    <td><%= attendance.attend %></td>
+    <%= link_to 'Change', company_event_attendance_path(@company,@event, attendance.id), method: :PATCH %>
+    <%= link_to 'Delete', company_event_attendance_path(@company,@event, attendance.id), method: :DELETE %>
+    <br>
+  </tr>
+<% end %>
+
+<%= link_to 'Edit', edit_company_event_path(@company, @event) %> |
+<%= link_to 'Back', company_events_path %>

@@ -1,6 +1,7 @@
-<h1>Editing Worker</h1>
+<div class="container col">
+  <h1 class="jumbotron p-1">Editing Worker</h1>
+</div>
 
-<%= render 'form', worker: @worker %>
+<%= render 'formedit', worker: @worker %>
 
-<%= link_to 'Show', @worker %> |
-<%= link_to 'Back', workers_path %>
+<%= link_to 'Back', company_workers_path, class: 'btn btn-secondary m-1'  %>

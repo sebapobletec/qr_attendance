@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Events</h1>
-
 <table>
   <thead>
     <tr>
@@ -19,10 +18,10 @@
         <td><%= event.title %></td>
         <td><%= event.theme %></td>
         <td><%= event.date %></td>
-        <td><%= event.company %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= event.company.name %></td>
+        <td><%= link_to 'Show', company_event_path(@company, event) %></td>
+        <td><%= link_to 'Edit', edit_company_event_path(@company, event) %></td>
+        <td><%= link_to 'Destroy', company_event_path(@company, event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +29,5 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+<%= link_to 'New Event', new_company_event_path %>
+<%= link_to 'Back', company_path(@company) %>
